@@ -7,7 +7,7 @@ Find the maximum number of courses that Geek can complete in those n days if he 
 
 Note: On any day, Geek can only buy the new course that was made available for purchase that day.*/
 
-we will are using dp,inspired from knapsack problem
+we  are using dp,inspired from knapsack problem
 
 
 class Solution {
