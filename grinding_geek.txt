@@ -1,0 +1,38 @@
+/*GeeksforGeeks has introduced a special offer where you can enroll in any course, and if you manage to complete 90% of the course within 90 days,
+you will receive a refund of 90%.
+Geek was fascinated by this offer. This offer was valid for only n days, and each day a new course was available for purchase. 
+Geek decided that if he bought a course on some day, 
+he will complete that course on the same day itself and redeem floor[90% of cost of the course] amount back. 
+Find the maximum number of courses that Geek can complete in those n days if he had total amount initially.
+
+Note: On any day, Geek can only buy the new course that was made available for purchase that day.*/
+
+we will are using dp,inspired from knapsack problem
+
+
+class Solution {
+    public int solve(int[]cost,int index,int n,int total,int[][] dp)
+    {
+        if(index>n-1)
+        return 0;
+        if(dp[index][total]!=-1)
+        return dp[index][total];
+        int include=0,exclude=0;
+        if(cost[index]<=total)
+        include=solve(cost,index+1,n,((total-cost[index])+(int)Math.floor(0.9*cost[index])),dp)+1;
+        exclude=solve(cost,index+1,n,total,dp)+0;
+        dp[index][total]= Math.max(include,exclude);
+        return dp[index][total];
+    }
+    public int max_courses(int n, int total, int[] cost) {
+        // code here
+        int[][] dp=new int[n][total+1];
+        for(int i=0;i<n;i++)
+        Arrays.fill(dp[i],-1);
+        int ans=solve(cost,0,n,total,dp);
+        return ans;
+        
+    }
+}
+
+
