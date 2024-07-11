@@ -1,22 +1,19 @@
+//Optimized approach Time: O(N) Space :O(N)
+
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        Set<Character> st=new HashSet<>();
-        //char temp[]=s.toCharArray();
-        int maxi=0;
+        Map<Character,Integer> mp=new HashMap<Character,Integer>();
         int l=0,r=0;
-        for( r=0;r<s.length();r++)
+        int max_len=0;
+        int n=s.length();
+        while(r<n)
         {
-            if(st.contains(s.charAt(r)))
-            {
-                while(l<r && st.contains(s.charAt(r)))
-                {
-                    st.remove(s.charAt(l));
-                    l++;
-                }
-            }
-                st.add(s.charAt(r));
-                maxi=Math.max(maxi,r-l+1);
+            if(mp.containsKey(s.charAt(r)))
+            l=Math.max(mp.get(s.charAt(r))+1,l);
+            mp.put(s.charAt(r),r);
+            max_len=Math.max(max_len,r-l+1);
+            r++;
         }
-        return maxi;
+        return max_len;
     }
 }
