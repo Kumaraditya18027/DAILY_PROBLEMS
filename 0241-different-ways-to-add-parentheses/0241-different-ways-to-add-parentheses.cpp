@@ -15,9 +15,7 @@ public:
                         if(oper=='+')
                         res.push_back(a+b);
                         else if(oper == '-')
-                        {
-                            res.push_back(a-b);
-                        }
+                        res.push_back(a-b);
                         else if(oper =='*')
                         res.push_back(a*b);
                     }
