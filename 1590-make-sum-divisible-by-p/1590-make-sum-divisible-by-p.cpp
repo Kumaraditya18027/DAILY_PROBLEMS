@@ -1,7 +1,7 @@
 class Solution {
 public:
     int minSubarray(vector<int>& nums, int p) {
-        int sum=0;
+        long long sum=0;
         for(int num:nums)
         {
             sum+=num;
